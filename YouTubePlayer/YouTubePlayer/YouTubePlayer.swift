@@ -73,8 +73,8 @@ private extension URL {
 }
 
 public func videoIDFromYouTubeURL(_ videoURL: URL) -> String? {
-    if let host = videoURL.host, let pathComponents = videoURL.pathComponents , pathComponents.count > 1 && host.hasSuffix("youtu.be") {
-        return pathComponents[1]
+    if let host = videoURL.host, videoURL.pathComponents.count > 1 && host.hasSuffix("youtu.be") {
+        return videoURL.pathComponents[1]
     }
     return videoURL.queryStringComponents()["v"] as? String
 }
